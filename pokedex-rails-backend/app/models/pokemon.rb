@@ -9,11 +9,52 @@
 #  defense    :integer          not null
 #  poke_type  :string           not null
 #  image_url  :string           not null
-#  captured   :boolean          not null
+#  captured   :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class Pokemon < ApplicationRecord
-    validates :number ,:name,:attack,:defense,:poke_type,:image_url ,:captured,presence:true
-    
+
+    TYPES = [
+    'fire',
+    'electric',
+    'normal',
+    'ghost',
+    'psychic',
+    'water',
+    'bug',
+    'dragon',
+    'grass',
+    'fighting',
+    'ice',
+    'flying',
+    'poison',
+    'ground',
+    'rock',
+    'steel'
+  ].sort.freeze
+
+    validates :poke_type, inclusion: { in: TYPES, message: "'%{value}' is not a valid Pokemon type" }
+
+    validates :number,:name,:attack,:defense,:poke_type,:image_url, presence: true
+
+    validates :captured, inclusion:[true, false]
+
+    validates :name, length: {in: 3..255 }, uniqueness: { message: "'%{value}' is already in use" }
+
+    validates :number, numericality: {greater_than: 0}
+    validates :attack, numericality: {in: 0..100}
+    validates :defense, numericality: {in: 0..100}
+
+    has_many :poke_moves,
+        dependent: :destroy
+
+    has_many :moves,
+        through: :poke_moves,
+        source: :move,
+        dependent: :destroy
+
+    has_many :items,
+        dependent: :destroy
+
 end
