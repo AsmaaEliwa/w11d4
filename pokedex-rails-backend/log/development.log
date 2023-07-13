@@ -21287,3 +21287,887 @@ Processing by Api::PokemonController#index as JSON
 Completed 200 OK in 22ms (Views: 17.2ms | ActiveRecord: 4.1ms | Allocations: 14266)
 
 
+Started GET "/" for 127.0.0.1 at 2023-07-13 16:06:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/aa/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/aa/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/railties-7.0.6/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.8ms | Allocations: 524)
+Completed 200 OK in 2960ms (Views: 23.8ms | ActiveRecord: 0.0ms | Allocations: 949436)
+
+
+Started GET "/api/pokemon" for 127.0.0.1 at 2023-07-13 16:06:38 -0400
+Processing by Api::PokemonController#index as JSON
+  Rendering api/pokemon/index.jbuilder
+  [1m[36mPokemon Load (15.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons"[0m
+  ↳ app/views/api/pokemon/index.jbuilder:1
+  Rendered api/pokemon/index.jbuilder (Duration: 113.6ms | Allocations: 13915)
+Completed 200 OK in 166ms (Views: 88.5ms | ActiveRecord: 41.2ms | Allocations: 17986)
+
+
+Started GET "/api/pokemon" for 127.0.0.1 at 2023-07-13 16:13:03 -0400
+Processing by Api::PokemonController#index as JSON
+  Rendering api/pokemon/index.jbuilder
+  [1m[36mPokemon Load (1.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons"[0m
+  ↳ app/views/api/pokemon/index.jbuilder:1
+  Rendered api/pokemon/index.jbuilder (Duration: 151.4ms | Allocations: 15038)
+Completed 500 Internal Server Error in 194ms (ActiveRecord: 30.6ms | Allocations: 18024)
+
+
+
+NoMethodError - undefined method `imageUrl' for #<Pokemon id: 8, number: 8, name: "Wartortle", attack: 63, defense: 80, poke_type: "water", image_url: "/images/pokemon_snaps/8.svg", captured: false, created_at: "2023-07-13 18:31:53.686120000 +0000", updated_at: "2023-07-13 18:31:53.686120000 +0000">
+Did you mean?  image_url
+               image_url?
+               image_url=:
+  app/views/api/pokemon/index.jbuilder:7
+  app/views/api/pokemon/index.jbuilder:2
+  app/views/api/pokemon/index.jbuilder:1
+  app/controllers/api/pokemon_controller.rb:5:in `index'
+
+Started POST "/__better_errors/a50b9c21f3fb922c/variables" for 127.0.0.1 at 2023-07-13 16:13:04 -0400
+Started GET "/api/pokemon" for 127.0.0.1 at 2023-07-13 16:13:39 -0400
+Processing by Api::PokemonController#index as JSON
+  Rendering api/pokemon/index.jbuilder
+  [1m[36mPokemon Load (2.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons"[0m
+  ↳ app/views/api/pokemon/index.jbuilder:1
+  Rendered api/pokemon/index.jbuilder (Duration: 66.7ms | Allocations: 9851)
+Completed 200 OK in 76ms (Views: 72.3ms | ActiveRecord: 2.8ms | Allocations: 10722)
+
+
+Started GET "/api/pokemon" for 127.0.0.1 at 2023-07-13 16:14:17 -0400
+Processing by Api::PokemonController#index as JSON
+  Rendering api/pokemon/index.jbuilder
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons"[0m
+  ↳ app/views/api/pokemon/index.jbuilder:1
+  Rendered api/pokemon/index.jbuilder (Duration: 43.2ms | Allocations: 9865)
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 0.7ms | Allocations: 10714)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:18:28 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (3.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 17.7ms | Allocations: 323)
+Completed 200 OK in 138ms (Views: 36.1ms | ActiveRecord: 21.1ms | Allocations: 9304)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:20:40 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (19.5ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 208.2ms | Allocations: 15971)
+Completed 200 OK in 301ms (Views: 212.5ms | ActiveRecord: 32.4ms | Allocations: 17367)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:21:08 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 2.9ms | Allocations: 705)
+Completed 200 OK in 18ms (Views: 6.0ms | ActiveRecord: 2.9ms | Allocations: 2081)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:21:18 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 9.8ms | Allocations: 1485)
+Completed 200 OK in 20ms (Views: 10.5ms | ActiveRecord: 4.1ms | Allocations: 2874)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:22:08 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (0.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 7.2ms | Allocations: 1323)
+Completed 200 OK in 20ms (Views: 12.5ms | ActiveRecord: 2.4ms | Allocations: 2664)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:22:40 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 9.9ms | Allocations: 1298)
+Completed 200 OK in 22ms (Views: 14.3ms | ActiveRecord: 2.4ms | Allocations: 2638)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:22:48 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.7ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 30.8ms | Allocations: 4956)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 4.1ms | Allocations: 6281)
+
+
+
+NoMethodError - undefined method `to_a' for "tackle":String
+      _format_keys(collection.to_a)
+                             ^^^^^
+Did you mean?  to_d
+               to_c
+               to_f
+               to_i
+               to_r
+               to_s:
+  app/views/api/pokemon/show.jbuilder:4
+  app/views/api/pokemon/show.jbuilder:3
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/c50adeca2142fa68/variables" for 127.0.0.1 at 2023-07-13 16:22:48 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:22:59 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (4.0ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 29.1ms | Allocations: 1322)
+Completed 200 OK in 48ms (Views: 34.0ms | ActiveRecord: 6.4ms | Allocations: 2664)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:23:41 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.2ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 14.5ms | Allocations: 1296)
+Completed 200 OK in 25ms (Views: 14.7ms | ActiveRecord: 5.1ms | Allocations: 2636)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:23:52 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (3.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 12.6ms | Allocations: 1319)
+Completed 200 OK in 31ms (Views: 16.6ms | ActiveRecord: 6.9ms | Allocations: 2659)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:24:34 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.4ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 38.1ms | Allocations: 6520)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 3.8ms | Allocations: 7838)
+
+
+
+NoMethodError - undefined method `map' for #<Move id: 1, name: "tackle", created_at: "2023-07-13 18:31:53.457637000 +0000", updated_at: "2023-07-13 18:31:53.457637000 +0000">
+Did you mean?  tap:
+  app/views/api/pokemon/show.jbuilder:4
+  app/views/api/pokemon/show.jbuilder:3
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/6c8f42f9f9194dfe/variables" for 127.0.0.1 at 2023-07-13 16:24:34 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:24:45 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (7.5ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:3
+  Rendered api/pokemon/show.jbuilder (Duration: 91.3ms | Allocations: 1319)
+Completed 200 OK in 167ms (Views: 135.4ms | ActiveRecord: 8.6ms | Allocations: 2659)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:25:09 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 19.5ms | Allocations: 4677)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.3ms | Allocations: 6009)
+
+
+
+NameError - undefined local variable or method `move' for #<ActionView::Base:0x0000000000a208>:
+  app/views/api/pokemon/show.jbuilder:2
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/2679015533c2e5d9/variables" for 127.0.0.1 at 2023-07-13 16:25:09 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:25:18 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 11.1ms | Allocations: 4647)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.5ms | Allocations: 6025)
+
+
+
+NameError - undefined local variable or method `moves' for #<ActionView::Base:0x0000000000a2d0>:
+  app/views/api/pokemon/show.jbuilder:2
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/de96b8b3024a5783/variables" for 127.0.0.1 at 2023-07-13 16:25:18 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:25:30 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:2
+  Rendered api/pokemon/show.jbuilder (Duration: 12.4ms | Allocations: 2543)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 4.1ms | Allocations: 3911)
+
+
+
+Jbuilder::MergeError - Can't merge [{"name"=>"tackle"}, {"name"=>"vine whip"}] into {"pokemon"=>#<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">}:
+  app/views/api/pokemon/show.jbuilder:2
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/34206212ac105205/variables" for 127.0.0.1 at 2023-07-13 16:25:30 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:25:58 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 3.1ms | Allocations: 660)
+Completed 200 OK in 19ms (Views: 7.9ms | ActiveRecord: 1.7ms | Allocations: 2009)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:26:08 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 1.4ms | Allocations: 279)
+Completed 200 OK in 15ms (Views: 6.4ms | ActiveRecord: 2.9ms | Allocations: 1680)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:26:22 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (3.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 0.5ms | Allocations: 107)
+Completed 200 OK in 23ms (Views: 10.0ms | ActiveRecord: 3.7ms | Allocations: 1511)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:26:31 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (7.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 17.7ms | Allocations: 4402)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 7.2ms | Allocations: 5784)
+
+
+
+NoMethodError - undefined method `json' for #<ActionView::Base:0x0000000000a500>
+Did you mean?  JSON:
+  app/views/api/pokemon/show.jbuilder:1
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/1e5362f6ac19e7ca/variables" for 127.0.0.1 at 2023-07-13 16:26:31 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:26:55 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (4.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 30.9ms | Allocations: 6013)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 4.4ms | Allocations: 7391)
+
+
+
+NoMethodError - undefined method `map' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">
+Did you mean?  tap:
+  app/views/api/pokemon/show.jbuilder:1
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/6b04805c9d0aa895/variables" for 127.0.0.1 at 2023-07-13 16:26:55 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:28:17 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.4ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:1
+  Rendered api/pokemon/show.jbuilder (Duration: 31.8ms | Allocations: 1200)
+Completed 200 OK in 49ms (Views: 35.4ms | ActiveRecord: 2.7ms | Allocations: 2588)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:29:24 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:2
+  Rendered api/pokemon/show.jbuilder (Duration: 23.8ms | Allocations: 1351)
+Completed 200 OK in 83ms (Views: 47.9ms | ActiveRecord: 4.4ms | Allocations: 2691)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:29:32 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (25.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.0ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:2
+  Rendered api/pokemon/show.jbuilder (Duration: 10.5ms | Allocations: 1349)
+Completed 200 OK in 44ms (Views: 10.9ms | ActiveRecord: 28.3ms | Allocations: 2689)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:29:59 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (4.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 0.7ms | Allocations: 177)
+Completed 200 OK in 18ms (Views: 5.9ms | ActiveRecord: 4.7ms | Allocations: 1529)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:30:05 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 10.0ms | Allocations: 493)
+Completed 200 OK in 20ms (Views: 14.3ms | ActiveRecord: 1.6ms | Allocations: 1890)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:32:13 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 36.1ms | Allocations: 6107)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 0.8ms | Allocations: 7486)
+
+
+
+NoMethodError - undefined method `type' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">:
+  app/views/api/pokemon/show.jbuilder:1
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/72cf96d10518874f/variables" for 127.0.0.1 at 2023-07-13 16:32:13 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:32:24 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.3ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:18
+  Rendered api/pokemon/show.jbuilder (Duration: 16.8ms | Allocations: 1501)
+Completed 200 OK in 33ms (Views: 19.6ms | ActiveRecord: 2.7ms | Allocations: 2889)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:32:45 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 4.8ms | Allocations: 1407)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.2ms | Allocations: 2742)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check json.extract! @pokemon, :id, :number, :attack, :defense, :name,, :moves.name, :captured
+json.type @pokemon.poke_type
+#   "imageUrl": "/images/pokemon_snaps/1.svg",
+#   "id": 1,
+#   "number": 1,
+#   "attack": 49,
+#   "defense": 49,
+#   "name": "Bulbasaur",
+#   "type": "grass",
+#   "moves": [
+#     "tackle",
+#     "vine whip"
+#   ],
+#   "captured": true,
+#   "createdAt": "2020-12-16T01:17:24.119Z",
+#   "updatedAt": "2020-12-16T01:17:24.119Z":
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/1dca00871b28133c/variables" for 127.0.0.1 at 2023-07-13 16:32:45 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:32:53 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.7ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:19
+  Rendered api/pokemon/show.jbuilder (Duration: 9.3ms | Allocations: 1498)
+Completed 200 OK in 21ms (Views: 12.6ms | ActiveRecord: 3.5ms | Allocations: 2888)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:33:38 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 6.0ms | Allocations: 657)
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 1.4ms | Allocations: 2004)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:34:14 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (0.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 17.2ms | Allocations: 1463)
+Completed 200 OK in 39ms (Views: 27.1ms | ActiveRecord: 2.6ms | Allocations: 2852)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:34:25 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.5ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 16.5ms | Allocations: 1286)
+Completed 200 OK in 22ms (Views: 17.8ms | ActiveRecord: 2.2ms | Allocations: 2627)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:34:49 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 27.1ms | Allocations: 3619)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 3.6ms | Allocations: 4938)
+
+
+
+NoMethodError - undefined method `name' for nil:NilClass:
+  app/views/api/pokemon/show.jbuilder:5
+  app/views/api/pokemon/show.jbuilder:4
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/16ea200a2532a3fc/variables" for 127.0.0.1 at 2023-07-13 16:34:49 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:34:58 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (14.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (5.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 16.3ms | Allocations: 1309)
+Completed 200 OK in 49ms (Views: 13.3ms | ActiveRecord: 19.9ms | Allocations: 2649)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:35:45 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (8.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.4ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 64.9ms | Allocations: 3634)
+Completed 500 Internal Server Error in 241ms (ActiveRecord: 9.4ms | Allocations: 4953)
+
+
+
+NoMethodError - undefined method `push' for nil:NilClass:
+  app/views/api/pokemon/show.jbuilder:6
+  app/views/api/pokemon/show.jbuilder:5
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/d68afaa0c0681b1e/variables" for 127.0.0.1 at 2023-07-13 16:35:46 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:35:47 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (5.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 17.4ms | Allocations: 3347)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 6.6ms | Allocations: 4021)
+
+
+
+NoMethodError - undefined method `push' for nil:NilClass:
+  app/views/api/pokemon/show.jbuilder:6
+  app/views/api/pokemon/show.jbuilder:5
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/d72eccd8fb09257d/variables" for 127.0.0.1 at 2023-07-13 16:35:47 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:36:27 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (5.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 14.2ms | Allocations: 1309)
+Completed 200 OK in 38ms (Views: 18.0ms | ActiveRecord: 8.2ms | Allocations: 2621)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:36:47 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.4ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 52.1ms | Allocations: 6585)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 4.1ms | Allocations: 7903)
+
+
+
+NoMethodError - undefined method `map' for #<Move id: 1, name: "tackle", created_at: "2023-07-13 18:31:53.457637000 +0000", updated_at: "2023-07-13 18:31:53.457637000 +0000">
+Did you mean?  tap:
+  app/views/api/pokemon/show.jbuilder:6
+  app/views/api/pokemon/show.jbuilder:5
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/bb1779ef7e88f57b/variables" for 127.0.0.1 at 2023-07-13 16:36:47 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:37:02 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (6.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 43.7ms | Allocations: 1285)
+Completed 200 OK in 52ms (Views: 40.3ms | ActiveRecord: 7.2ms | Allocations: 2625)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:38:27 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (0.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:6
+  Rendered api/pokemon/show.jbuilder (Duration: 36.3ms | Allocations: 1287)
+Completed 200 OK in 106ms (Views: 65.7ms | ActiveRecord: 2.5ms | Allocations: 2629)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:39:15 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 15.5ms | Allocations: 650)
+Completed 200 OK in 31ms (Views: 20.7ms | ActiveRecord: 2.0ms | Allocations: 1997)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:39:21 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:22
+  Rendered api/pokemon/show.jbuilder (Duration: 19.3ms | Allocations: 1503)
+Completed 200 OK in 36ms (Views: 20.7ms | ActiveRecord: 5.8ms | Allocations: 2892)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:40:42 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.7ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 73.4ms | Allocations: 7161)
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 2.9ms | Allocations: 8480)
+
+
+
+NoMethodError - undefined method `move_name' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">
+Did you mean?  model_name:
+  app/views/api/pokemon/show.jbuilder:5
+  app/views/api/pokemon/show.jbuilder:4
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+  [1m[36mMove Load (30.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["pokemon_id", 1], ["LIMIT", 11]]
+  ↳ (eval):73:in `block in render_template'
+Started POST "/__better_errors/5c1914c52d629784/variables" for 127.0.0.1 at 2023-07-13 16:40:42 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:41:17 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (0.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 46.2ms | Allocations: 7185)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 1.5ms | Allocations: 8503)
+
+
+
+NoMethodError - undefined method `move_id' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">
+Did you mean?  move_ids
+               move_ids=:
+  app/views/api/pokemon/show.jbuilder:5
+  app/views/api/pokemon/show.jbuilder:4
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+  [1m[36mMove Load (1.2ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["pokemon_id", 1], ["LIMIT", 11]]
+  ↳ (eval):73:in `block in render_template'
+Started POST "/__better_errors/f7a469465b0d055a/variables" for 127.0.0.1 at 2023-07-13 16:41:18 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:41:25 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.6ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 15.7ms | Allocations: 1351)
+Completed 200 OK in 30ms (Views: 22.9ms | ActiveRecord: 3.2ms | Allocations: 2691)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:41:57 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (2.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 57.9ms | Allocations: 7183)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 4.7ms | Allocations: 8501)
+
+
+
+NoMethodError - undefined method `move_names' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">
+Did you mean?  model_name:
+  app/views/api/pokemon/show.jbuilder:5
+  app/views/api/pokemon/show.jbuilder:4
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+  [1m[36mMove Load (1.5ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["pokemon_id", 1], ["LIMIT", 11]]
+  ↳ (eval):73:in `block in render_template'
+Started POST "/__better_errors/e291f0e5d0981127/variables" for 127.0.0.1 at 2023-07-13 16:41:58 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:42:17 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:4
+  Rendered api/pokemon/show.jbuilder (Duration: 9.6ms | Allocations: 1334)
+Completed 200 OK in 21ms (Views: 15.3ms | ActiveRecord: 1.7ms | Allocations: 2674)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:43:35 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.9ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 11.9ms | Allocations: 1323)
+Completed 200 OK in 25ms (Views: 15.9ms | ActiveRecord: 2.5ms | Allocations: 2663)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:46:06 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  Rendered api/pokemon/show.jbuilder (Duration: 53.9ms | Allocations: 6415)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 1.1ms | Allocations: 7745)
+
+
+
+NoMethodError - undefined method `createdAt' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">
+Did you mean?  created_at
+               created_at?
+               created_at=:
+  app/views/api/pokemon/show.jbuilder:1
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+Started POST "/__better_errors/27b5e070da84de6e/variables" for 127.0.0.1 at 2023-07-13 16:46:06 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:47:17 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (3.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (1.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 53.8ms | Allocations: 7382)
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 4.4ms | Allocations: 8749)
+
+
+
+NoMethodError - undefined method `createdAt' for #<Pokemon id: 1, number: 1, name: "Bulbasaur", attack: 49, defense: 49, poke_type: "grass", image_url: "/images/pokemon_snaps/1.svg", captured: true, created_at: "2023-07-13 18:31:53.444524000 +0000", updated_at: "2023-07-13 18:31:53.444524000 +0000">
+Did you mean?  created_at
+               created_at?
+               created_at=:
+  app/views/api/pokemon/show.jbuilder:11
+  app/controllers/api/pokemon_controller.rb:10:in `show'
+
+  [1m[36mMove Load (1.0ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["pokemon_id", 1], ["LIMIT", 11]]
+  ↳ (eval):73:in `block in render_template'
+Started POST "/__better_errors/a422a22c9dd43482/variables" for 127.0.0.1 at 2023-07-13 16:47:17 -0400
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:47:24 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (3.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.0ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 9.9ms | Allocations: 1385)
+Completed 200 OK in 23ms (Views: 11.9ms | ActiveRecord: 6.0ms | Allocations: 2726)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:47:40 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (0.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.1ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 23.9ms | Allocations: 1390)
+Completed 200 OK in 36ms (Views: 26.2ms | ActiveRecord: 2.8ms | Allocations: 2730)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:47:58 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.8ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 14.7ms | Allocations: 1435)
+Completed 200 OK in 28ms (Views: 19.1ms | ActiveRecord: 4.3ms | Allocations: 2775)
+
+
+Started GET "/api/pokemon/1" for 127.0.0.1 at 2023-07-13 16:48:20 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPokemon Load (4.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (3.0ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 7.7ms | Allocations: 1414)
+Completed 200 OK in 24ms (Views: 10.4ms | ActiveRecord: 7.2ms | Allocations: 2754)
+
+
+Started GET "/api/pokemon/5" for 127.0.0.1 at 2023-07-13 16:49:24 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.0ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 5]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 96.0ms | Allocations: 1158)
+Completed 200 OK in 154ms (Views: 107.7ms | ActiveRecord: 3.3ms | Allocations: 1846)
+
+
+Started GET "/api/items" for 127.0.0.1 at 2023-07-13 16:57:02 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/items"):
+  
+Started GET "/pokemon/1" for ::1 at 2023-07-13 16:57:15 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/pokemon/1"):
+  
+Started GET "/api/pokemon/1" for ::1 at 2023-07-13 16:57:23 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"some_category"=>{"a_key"=>"[FILTERED]", "a_second_key"=>"[FILTERED]", "inner_inner_hash"=>{"key"=>"value"}}, "something_else"=>"aaahhhh", "id"=>"1"}
+  [1m[36mPokemon Load (0.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+  Rendering api/pokemon/show.jbuilder
+  [1m[36mMove Load (2.7ms)[0m  [1m[34mSELECT "moves".* FROM "moves" INNER JOIN "poke_moves" ON "moves"."id" = "poke_moves"."move_id" WHERE "poke_moves"."pokemon_id" = $1[0m  [["pokemon_id", 1]]
+  ↳ app/views/api/pokemon/show.jbuilder:5
+  Rendered api/pokemon/show.jbuilder (Duration: 76.1ms | Allocations: 9159)
+Completed 200 OK in 293ms (Views: 83.8ms | ActiveRecord: 84.7ms | Allocations: 18499)
+
+
+Started GET "/api/pokemon/items" for ::1 at 2023-07-13 16:57:45 -0400
+Processing by Api::PokemonController#show as JSON
+  Parameters: {"some_category"=>{"a_key"=>"[FILTERED]", "a_second_key"=>"[FILTERED]", "inner_inner_hash"=>{"key"=>"value"}}, "something_else"=>"aaahhhh", "id"=>"items"}
+  [1m[36mPokemon Load (2.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/pokemon_controller.rb:9:in `show'
+Completed 404 Not Found in 13ms (ActiveRecord: 2.9ms | Allocations: 1019)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Pokemon with 'id'=items:
+  app/controllers/api/pokemon_controller.rb:9:in `show'
+
+Started GET "/api/pokemon/items/1" for ::1 at 2023-07-13 16:57:48 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/pokemon/items/1"):
+  
+Started GET "/api/items/" for ::1 at 2023-07-13 16:58:05 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/items"):
+  
